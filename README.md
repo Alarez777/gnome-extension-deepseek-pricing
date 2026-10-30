@@ -27,11 +27,11 @@ GNOME Shell extension that shows whether the DeepSeek API is currently on the **
 |---|---|
 | ![Popup](screenshots/menu.png) | ![Preferences](screenshots/preferences.png) |
 
-| Panel mode | Preview |
-|---|---|
-| **Icon only** — the whale color shows the current rate. | ![Icon only](screenshots/panel-icon-only.png) |
-| **Icon and status** — adds *Cheap* or *Expensive* next to the icon. | ![Icon and status](screenshots/panel-icon-state.png) |
-| **Icon and countdown** — adds the time left until the next change. | ![Icon and countdown](screenshots/panel-icon-countdown.png) |
+| Panel mode | Cheap | Expensive |
+|---|---|---|
+| **Icon only** — the whale color shows the current rate. | ![Icon only, cheap](screenshots/panel-icon-only-cheap.png) | ![Icon only, expensive](screenshots/panel-icon-only-expensive.png) |
+| **Icon and status** — adds *Cheap* or *Expensive* next to the icon. | ![Icon and status, cheap](screenshots/panel-icon-state-cheap.png) | ![Icon and status, expensive](screenshots/panel-icon-state-expensive.png) |
+| **Icon and countdown** — adds the time left until the next change. | ![Icon and countdown, cheap](screenshots/panel-icon-countdown-cheap.png) | ![Icon and countdown, expensive](screenshots/panel-icon-countdown-expensive.png) |
 
 ## Schedule and prices
 

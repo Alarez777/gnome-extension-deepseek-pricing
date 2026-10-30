@@ -27,11 +27,11 @@ Extensión de GNOME Shell que muestra si la API de DeepSeek está ahora en **tar
 |---|---|
 | ![Menú desplegado](screenshots/menu.png) | ![Preferencias](screenshots/preferences.png) |
 
-| Modo del panel | Vista |
-|---|---|
-| **Solo icono** — el color de la ballena indica la tarifa actual. | ![Solo icono](screenshots/panel-icon-only.png) |
-| **Icono y estado** — añade *Barato* o *Caro* junto al icono. | ![Icono y estado](screenshots/panel-icon-state.png) |
-| **Icono y cuenta atrás** — añade el tiempo hasta el próximo cambio. | ![Icono y cuenta atrás](screenshots/panel-icon-countdown.png) |
+| Modo del panel | Barato | Caro |
+|---|---|---|
+| **Solo icono** — el color de la ballena indica la tarifa actual. | ![Solo icono, barato](screenshots/panel-icon-only-cheap.png) | ![Solo icono, caro](screenshots/panel-icon-only-expensive.png) |
+| **Icono y estado** — añade *Barato* o *Caro* junto al icono. | ![Icono y estado, barato](screenshots/panel-icon-state-cheap.png) | ![Icono y estado, caro](screenshots/panel-icon-state-expensive.png) |
+| **Icono y cuenta atrás** — añade el tiempo hasta el próximo cambio. | ![Icono y cuenta atrás, barato](screenshots/panel-icon-countdown-cheap.png) | ![Icono y cuenta atrás, caro](screenshots/panel-icon-countdown-expensive.png) |
 
 ## Horario y precios
 
