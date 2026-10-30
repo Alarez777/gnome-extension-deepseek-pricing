@@ -181,7 +181,7 @@ schemas/              # GSettings
 make pack
 ```
 
-Upload `deepseek-pricing.zip`. The ZIP contains only the compiled JS, `metadata.json`, `stylesheet.css`, icons and the compiled schema: it does not include `src/`, tests, `node_modules` or build scripts.
+Upload `deepseek-pricing.zip`. The ZIP contains only the compiled JS, `metadata.json`, `stylesheet.css`, icons and the schema XML (the installer compiles it): it does not include `src/`, tests, `node_modules`, build scripts or the compiled `gschemas.compiled`.
 
 Before submitting:
 
