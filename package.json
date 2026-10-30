@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "description": "GNOME Shell extension showing DeepSeek API peak/off-peak pricing",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alarez777/gnome-extension-deepseek-pricing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Alarez777/gnome-extension-deepseek-pricing/issues"
+  },
+  "homepage": "https://github.com/Alarez777/gnome-extension-deepseek-pricing#readme",
   "type": "module",
   "license": "GPL-2.0-or-later",
   "scripts": {
