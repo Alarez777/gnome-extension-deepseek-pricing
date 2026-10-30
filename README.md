@@ -21,6 +21,14 @@ Extensión de GNOME Shell que muestra si la API de DeepSeek está ahora en **tar
 
 ![Icono de la extensión](icons/whale-cheap.svg)
 
+## Capturas
+
+| Menú desplegado | Preferencias |
+|---|---|
+| ![Menú desplegado](screenshots/menu.png) | ![Preferencias](screenshots/preferences.png) |
+
+Modos del panel: **Icono y estado** ![Icono y estado](screenshots/panel-icon-state.png) · **Icono y cuenta atrás** ![Icono y cuenta atrás](screenshots/panel-icon-countdown.png)
+
 ## Horario y precios
 
 DeepSeek cambió su esquema en agosto de 2026:

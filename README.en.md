@@ -21,6 +21,14 @@ GNOME Shell extension that shows whether the DeepSeek API is currently on the **
 
 ![Extension icon](icons/whale-cheap.svg)
 
+## Screenshots
+
+| Popup | Preferences |
+|---|---|
+| ![Popup](screenshots/menu.png) | ![Preferences](screenshots/preferences.png) |
+
+Panel modes: **Icon and status** ![Icon and status](screenshots/panel-icon-state.png) · **Icon and countdown** ![Icon and countdown](screenshots/panel-icon-countdown.png)
+
 ## Schedule and prices
 
 DeepSeek changed its pricing scheme in August 2026:
