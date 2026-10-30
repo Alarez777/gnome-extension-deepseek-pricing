@@ -1,115 +1,115 @@
 # DeepSeek Pricing
 
-**Español** | [English](README.en.md)
+[Español](README.es.md) | **English**
 
 [![CI](https://github.com/Alarez777/gnome-extension-deepseek-pricing/actions/workflows/ci.yml/badge.svg)](https://github.com/Alarez777/gnome-extension-deepseek-pricing/actions/workflows/ci.yml)
-[![Licencia: GPL-2.0-or-later](https://img.shields.io/badge/licencia-GPL--2.0--or--later-blue)](LICENSE)
+[![License: GPL-2.0-or-later](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
 
-Extensión de GNOME Shell que muestra si la API de DeepSeek está ahora en **tarifa barata** o **cara**, con una cuenta atrás al siguiente cambio, un timeline de las próximas 24 horas y las tarifas oficiales por millón de tokens.
+GNOME Shell extension that shows whether the DeepSeek API is currently on the **cheap** or **expensive** rate, with a countdown to the next change, a 24-hour timeline and the official prices per million tokens.
 
-- Ballena propia en el panel: verde cuando es barato, ámbar cuando es caro.
-- Subrayado fino que se llena a medida que avanza el tramo actual; si se muestra estado o cuenta atrás, se estira debajo del texto.
-- Click para ver estado, cuenta atrás, timeline de 24 h, precios actuales/alternos y los próximos tramos con su rango (el actual marcado).
-- Al pasar el cursor por el timeline aparece una línea de posición y un tooltip con el tramo horario y su estado (`Caro · 22:00–00:00`).
-- Preferencias nativas (Adw) para idioma, separador decimal, modelo, modo del panel, formato de hora, terminología y barra de progreso.
-- Interfaz en español o inglés. Por defecto sigue el idioma del sistema y cae a inglés si no es compatible; el cambio se aplica al instante, sin reiniciar GNOME Shell.
-- Separador decimal configurable: por defecto sigue la región del sistema (México → `0.003`, España → `0,003`) y se puede forzar punto o coma.
-- Horas en formato de 12 o 24 h: sigue el reloj de GNOME por defecto, con opción de forzarlo.
-- Terminología configurable: **Barato/Caro** (simple, por defecto) o **Valle/Pico** (oficial).
-- Sin peticiones de red automáticas, sin telemetría y sin claves API: todo se calcula localmente. El único enlace externo es el de precios oficiales, que abre el navegador cuando lo pulsas.
-- Publicable en [extensions.gnome.org](https://extensions.gnome.org) (solo GJS/JS).
+- Custom whale in the panel: green when cheap, amber when expensive.
+- Thin underline that fills as the current block progresses; when the status or countdown is shown, it stretches under the text.
+- Click to see status, countdown, 24-hour timeline, current/alternate prices and upcoming blocks with their range (the current one is highlighted).
+- Hovering over the timeline shows a position line and a tooltip with the time block and its state (`Expensive · 22:00–00:00`).
+- Native preferences (Adw) for language, decimal separator, model, panel mode, time format, terminology and progress bar.
+- Spanish or English UI. By default it follows the system language and falls back to English if unsupported; changes apply instantly, without restarting GNOME Shell.
+- Configurable decimal separator: by default it follows the system region (Mexico → `0.003`, Spain → `0,003`) and can be forced to a dot or a comma.
+- 12- or 24-hour clock: follows the GNOME clock by default, with an option to force either.
+- Configurable terminology: **Cheap/Expensive** (simple, default) or **Off-peak/Peak** (official).
+- No automatic network requests, no telemetry and no API keys: everything is computed locally. The only external link is the official pricing page, which opens the browser when clicked.
+- Publishable on [extensions.gnome.org](https://extensions.gnome.org) (GJS/JS only).
 
-![Icono de la extensión](icons/whale-cheap.svg)
+![Extension icon](icons/whale-cheap.svg)
 
-## Capturas
+## Screenshots
 
-| Menú desplegado | Preferencias |
+| Popup | Preferences |
 |---|---|
-| ![Menú desplegado](screenshots/menu.png) | ![Preferencias](screenshots/preferences.png) |
+| ![Popup](screenshots/menu.png) | ![Preferences](screenshots/preferences.png) |
 
-Modos del panel: **Icono y estado** ![Icono y estado](screenshots/panel-icon-state.png) · **Icono y cuenta atrás** ![Icono y cuenta atrás](screenshots/panel-icon-countdown.png)
+Panel modes: **Icon only** ![Icon only](screenshots/panel-icon-only.png) · **Icon and status** ![Icon and status](screenshots/panel-icon-state.png) · **Icon and countdown** ![Icon and countdown](screenshots/panel-icon-countdown.png)
 
-## Horario y precios
+## Schedule and prices
 
-DeepSeek cambió su esquema en agosto de 2026:
+DeepSeek changed its pricing scheme in August 2026:
 
-- **Pico:** 01:00–04:00 y 06:00–10:00 **UTC**, de lunes a viernes, excluyendo feriados públicos chinos.
-- **Valle:** todo lo demás, incluidos fines de semana y feriados completos.
-- El valle cuesta **50 %** del pico.
+- **Peak:** 01:00–04:00 and 06:00–10:00 **UTC**, Monday to Friday, excluding Chinese public holidays.
+- **Off-peak:** everything else, including weekends and full holidays.
+- Off-peak costs **50%** of peak.
 
-Por defecto la interfaz usa **barato** y **caro** para que se entienda de un vistazo; en Preferencias → *Terminología* se puede cambiar a **valle** y **pico**, los nombres de la documentación oficial.
+The UI uses **cheap** and **expensive** by default so it is easy to read at a glance; Preferences → *Terminology* switches to **off-peak** and **peak**, the names used in the official documentation.
 
-| USD / 1M tokens | Flash valle | Flash pico | Pro valle | Pro pico |
+| USD / 1M tokens | Flash off-peak | Flash peak | Pro off-peak | Pro peak |
 |---|---|---|---|---|
 | Input (cache hit) | 0.003 | 0.006 | 0.022 | 0.044 |
 | Input (cache miss) | 0.15 | 0.30 | 0.66 | 1.32 |
 | Output | 0.60 | 1.20 | 1.98 | 3.96 |
 
-Fuente: [Models & Pricing](https://api-docs.deepseek.com/quick_start/pricing). Verificado el 2026-10-29.
+Source: [Models & Pricing](https://api-docs.deepseek.com/quick_start/pricing). Verified on 2026-10-29.
 
-El día hábil se decide en **UTC**, no en tu hora local. Por ejemplo, en `America/Mexico_City` (UTC−6) el tramo caro cae:
+The working day is decided in **UTC**, not in your local time. For example, in `America/Mexico_City` (UTC−6) the expensive block falls on:
 
-- domingo a jueves, 19:00–22:00 local;
-- lunes a viernes, 00:00–04:00 local.
+- Sunday to Thursday, 19:00–22:00 local time;
+- Monday to Friday, 00:00–04:00 local time.
 
-Por eso el domingo por la noche puede ser caro (en UTC ya es lunes) y el viernes por la noche es barato (en UTC ya es sábado). El timeline del menú resuelve esa ambigüedad visualmente.
+That is why Sunday evening can be expensive (it is already Monday in UTC) and Friday evening is cheap (it is already Saturday in UTC). The popup timeline makes that clear visually.
 
-En México el tramo barato largo va del **viernes 04:00 al domingo 19:00**; después hay pico el domingo 19:00–22:00, un hueco barato de 22:00 a 00:00 y otro pico el lunes 00:00–04:00. El tooltip del timeline muestra el final real del tramo aunque quede fuera de las próximas 24 horas.
+In Mexico the long cheap block runs from **Friday 04:00 to Sunday 19:00**; then there is a peak on Sunday 19:00–22:00, a cheap gap from 22:00 to 00:00, and another peak on Monday 00:00–04:00. The timeline tooltip shows the real end of the block even if it falls outside the next 24 hours.
 
-## Idioma y números
+## Language and numbers
 
-La interfaz está en español e inglés. En Preferencias → *Idioma y región*:
+The interface is available in Spanish and English. In Preferences → *Language and region*:
 
-- **Idioma:** *Automático* sigue el idioma del sistema; si no es español ni inglés, se usa inglés. También se puede forzar *English* o *Español*. El cambio se aplica al panel, al menú y a las preferencias al instante.
-- **Separador decimal:** *Automático* sigue la región del sistema (México → `0.003`, España → `0,003`); si el sistema no es español ni inglés, usa punto. También se puede forzar punto o coma. En español no hay una regla única: la RAE documenta coma en España, Argentina, Chile, Colombia, Ecuador, Paraguay, Perú y Uruguay, punto en México, Centroamérica, el Caribe y Venezuela, y recomienda el punto para unificar.
+- **Language:** *Automatic* follows the system language; if it is neither Spanish nor English, English is used. You can also force *English* or *Español*. Changes apply to the panel, popup and preferences instantly.
+- **Decimal separator:** *Automatic* follows the system region (Mexico → `0.003`, Spain → `0,003`); if the system is neither Spanish nor English, a dot is used. You can also force a dot or a comma. Spanish has no single rule: the RAE documents a comma in Spain, Argentina, Chile, Colombia, Ecuador, Paraguay, Peru and Uruguay, a dot in Mexico, Central America, the Caribbean and Venezuela, and recommends the dot for consistency.
 
-## Requisitos
+## Requirements
 
-- GNOME Shell 48 (probado en 48.7).
-- Para compilar: Node.js 20+, npm, `glib-compile-schemas` y `zip`.
-- Para probar: `gjs` y, opcionalmente, un shell anidado (`gnome-shell --nested --wayland`).
+- GNOME Shell 48 (tested on 48.7).
+- To build: Node.js 20+, npm, `glib-compile-schemas` and `zip`.
+- To test: `gjs` and, optionally, a nested shell (`gnome-shell --nested --wayland`).
 
-## Instalar
+## Install
 
 ```sh
 git clone https://github.com/Alarez777/gnome-extension-deepseek-pricing.git
 cd gnome-extension-deepseek-pricing
 npm install
-make pack          # crea deepseek-pricing.zip
-make install       # copia a ~/.local/share/gnome-shell/extensions/
+make pack          # creates deepseek-pricing.zip
+make install       # copies to ~/.local/share/gnome-shell/extensions/
 ```
 
-Luego:
+Then:
 
 ```sh
 gnome-extensions enable deepseek-pricing@alarez777.github.io
 ```
 
-En Wayland hay que cerrar sesión y volver a entrar **cada vez que instales o actualices**: GNOME Shell no recarga el código de una extensión en ejecución. En X11 puedes reiniciar el Shell con `Alt+F2` → `r`.
+On Wayland you must log out and back in **every time you install or update**: GNOME Shell does not reload extension code while running. On X11 you can restart the shell with `Alt+F2` → `r`.
 
-Para comprobar que la copia instalada coincide con `dist/`:
+To check that the installed copy matches `dist/`:
 
 ```sh
 make verify-install
 ```
 
-Para desinstalar:
+To uninstall:
 
 ```sh
 make uninstall
 ```
 
-## Desarrollo
+## Development
 
 ```sh
-npm run typecheck  # tsc estricto sobre src + tests
-npm test           # node:test sobre la lógica pura de pricing/
-make build         # compila TS + copia assets + compila el schema
+npm run typecheck  # strict tsc over src + tests
+npm test           # node:test over the pure pricing logic
+make build         # compiles TS + copies assets + compiles the schema
 
-# Shell anidado para probar sin afectar la sesión:
+# Nested shell to test without affecting your session:
 make install
 dbus-run-session -- gnome-shell --nested --wayland
-# en una terminal dentro de esa sesión:
+# in a terminal inside that session:
 gnome-extensions enable deepseek-pricing@alarez777.github.io
 ```
 
@@ -119,75 +119,75 @@ Logs:
 journalctl -f -o cat /usr/bin/gnome-shell
 ```
 
-La lógica de precios, feriados y segmentos vive en `src/pricing/` y **no importa GJS**, así que los tests corren en Node. La UI (`indicator.ts`, `menu.ts`, `timeline.ts`) es GJS/St y se prueba manualmente.
+The pricing, holiday and segment logic lives in `src/pricing/` and **does not import GJS**, so tests run on Node. The UI (`indicator.ts`, `menu.ts`, `timeline.ts`) is GJS/St and is tested manually.
 
-## Datos y mantenimiento
+## Data and maintenance
 
-- **Precios:** `src/pricing/prices.ts` (enteros en micro-USD por 1M tokens) y `PRICES_AS_OF`. Actualízalos cuando DeepSeek cambie tarifas; publica una nueva versión.
-- **Feriados chinos:** `src/pricing/holidays.ts`, generado a partir de [holiday-cn](https://github.com/NateScarlet/holiday-cn) y de los avisos del Consejo de Estado (`gov.cn`). Solo se listan los días no laborables; los fines de semana ya son baratos.
-- **2027:** el calendario se publica alrededor de noviembre de 2026. Mientras falte, el menú avisa y se aplican solo las reglas de fin de semana. Añade el año y actualiza `HOLIDAY_DATA_UPDATED`.
-- El menú muestra la fecha de los precios para que se vea su antigüedad.
+- **Prices:** `src/pricing/prices.ts` (integers in micro-USD per 1M tokens) and `PRICES_AS_OF`. Update them when DeepSeek changes its rates; publish a new version.
+- **Chinese holidays:** `src/pricing/holidays.ts`, generated from [holiday-cn](https://github.com/NateScarlet/holiday-cn) and State Council notices (`gov.cn`). Only non-working days are listed; weekends are already cheap.
+- **2027:** the calendar is published around November 2026. While it is missing, the popup warns and only the weekend rules apply. Add the year and update `HOLIDAY_DATA_UPDATED`.
+- The popup shows the price date so its age is visible.
 
-## Estructura
+## Structure
 
 ```
 src/
   extension.ts        # Extension: enable/disable
-  indicator.ts        # panel, icono, progreso, timers, settings
-  menu.ts             # popup: estado, timeline, precios, enlaces
-  timeline.ts         # dibujo Cairo de las próximas 24 h
-  prefs.ts            # ventana Adw
-  colors.ts           # paleta compartida con el CSS y los SVG
+  indicator.ts        # panel, icon, progress, timers, settings
+  menu.ts             # popup: status, timeline, prices, links
+  timeline.ts         # Cairo drawing of the next 24 h
+  prefs.ts            # Adw window
+  colors.ts           # palette shared with CSS and the SVGs
   i18n/
-    messages.ts       # catálogos inglés/español (tipados)
-    locale.ts         # detección de idioma y separador decimal (puro)
-    index.ts          # traductor para el Shell y las preferencias
+    messages.ts       # English/Spanish catalogs (typed)
+    locale.ts         # language and decimal separator detection (pure)
+    index.ts          # translator for the Shell and preferences
   pricing/
-    schedule.ts       # tier, siguiente cambio, segmentos (puro)
-    holidays.ts       # calendario chino (puro)
-    prices.ts         # tarifas oficiales (puro)
-    clock.ts          # 12 h / 24 h y formato de hora (puro)
-    terms.ts          # terminología barato/caro o valle/pico (puro)
-    format.ts         # horas locales/UTC y duraciones (GLib)
-tests/                # tests de la lógica pura
-icons/                # ballena original, verde y ámbar
+    schedule.ts       # tier, next change, segments (pure)
+    holidays.ts       # Chinese calendar (pure)
+    prices.ts         # official rates (pure)
+    clock.ts          # 12 h / 24 h and time formatting (pure)
+    terms.ts          # cheap/expensive or off-peak/peak terminology (pure)
+    format.ts         # local/UTC times and durations (GLib)
+tests/                # tests for the pure logic
+icons/                # original whale, green and amber
 schemas/              # GSettings
 ```
 
-## Reglas del proyecto
+## Project rules
 
-- El panel indica el estado con el icono y el color; el texto del panel es opcional (preferencia "Icono y estado" o "Icono y cuenta atrás").
-- La UI no reimplementa las reglas de precio: `getStatus()` devuelve los segmentos de 24 h y el próximo cambio; el menú solo pinta.
-- `disable()` elimina timers, señales y actores. No se crean objetos GObject al importar los módulos.
-- El proyecto no usa red. El futuro saldo/uso de la API requeriría una nueva fase y almacenamiento seguro de la clave.
+- The panel shows the state with the icon and color; the panel text is optional ("Icon and status" or "Icon and countdown" preference).
+- The UI does not reimplement the pricing rules: `getStatus()` returns the 24-hour segments and the next change; the popup only paints them.
+- `disable()` removes timers, signals and actors. No GObject is created when importing modules.
+- The project does not use the network. Future API balance/usage would require a new phase and secure key storage.
 
-## Limitaciones conocidas
+## Known limitations
 
-- Solo se anuncia para GNOME Shell 48 (probado en 48.7). GNOME 49–51 no están probados: 51 elimina la propiedad `St.BoxLayout.vertical`, que este código todavía usa. Para portarla, cámbiala por `orientation: Clutter.Orientation.VERTICAL` (compatible con 48), actualiza `shell-version` en `metadata.json` y prueba en cada versión antes de anunciarla.
-- GNOME 49 eliminó el modo anidado `--nested` (se usa `--devkit --wayland`) y GNOME 50 eliminó X11, así que las instrucciones de reinicio con `Alt+F2` → `r` solo aplican a 48.
-- GNOME 48 no expone tooltips en `St`; la información está en el popup y en el modo de texto opcional.
-- Se muestran tarifas oficiales por token, no tu gasto ni tu saldo real.
-- El nombre y la descripción que GNOME muestra en la lista de extensiones vienen de `metadata.json` y no cambian con la preferencia de idioma.
-- Los precios están en USD; no hay conversión de moneda.
-- La barra de progreso avanza dentro del tramo actual; en un fin de semana largo el avance es lento por diseño.
+- Only GNOME Shell 48 is advertised (tested on 48.7). GNOME 49–51 are untested: 51 removes the `St.BoxLayout.vertical` property, which this code still uses. To port it, replace it with `orientation: Clutter.Orientation.VERTICAL` (compatible with 48), update `shell-version` in `metadata.json` and test on each version before advertising it.
+- GNOME 49 removed nested mode `--nested` (use `--devkit --wayland`) and GNOME 50 removed X11, so the `Alt+F2` → `r` restart instructions only apply to 48.
+- GNOME 48 does not expose tooltips on `St`; the information is in the popup and in the optional text mode.
+- It shows official per-token rates, not your spending or actual balance.
+- The name and description GNOME shows in the extension list come from `metadata.json` and do not change with the language preference.
+- Prices are in USD; there is no currency conversion.
+- The progress bar advances within the current block; on a long weekend it moves slowly by design.
 
-## Publicar en extensions.gnome.org
+## Publishing to extensions.gnome.org
 
 ```sh
 make pack
 ```
 
-Sube `deepseek-pricing.zip`. El ZIP contiene solo el JS compilado, `metadata.json`, `stylesheet.css`, iconos y el schema compilado: no incluye `src/`, tests, `node_modules` ni scripts de build.
+Upload `deepseek-pricing.zip`. The ZIP contains only the compiled JS, `metadata.json`, `stylesheet.css`, icons and the compiled schema: it does not include `src/`, tests, `node_modules` or build scripts.
 
-Antes de enviarlo:
+Before submitting:
 
-- Revisa que el UUID (`deepseek-pricing@alarez777.github.io`) coincida con tu cuenta/namespace de GitHub. Si cambias de namespace, actualiza `metadata.json` y el `UUID` del `Makefile`.
-- El icono es una ballena original, no el logo de DeepSeek. El nombre es descriptivo y la descripción incluye el descargo de afiliación.
-- Las guías de EGO piden que el autor pueda explicar el código; revisa y adapta lo que haga falta antes de publicar.
-- Verifica la lista de revisión: nada se crea fuera de `enable()`, todo se destruye en `disable()`, sin GTK en el proceso de Shell, sin binarios, sin telemetría.
+- Make sure the UUID (`deepseek-pricing@alarez777.github.io`) matches your GitHub account/namespace. If you change the namespace, update `metadata.json` and the `UUID` in the `Makefile`.
+- The icon is an original whale, not the DeepSeek logo. The name is descriptive and the description includes the non-affiliation disclaimer.
+- EGO guidelines require the author to be able to explain the code; review and adapt whatever is needed before publishing.
+- Check the review list: nothing is created outside `enable()`, everything is destroyed in `disable()`, no GTK in the Shell process, no binaries, no telemetry.
 
-## Licencia
+## License
 
-GPL-2.0-or-later. Ver [LICENSE](LICENSE).
+GPL-2.0-or-later. See [LICENSE](LICENSE).
 
-Este proyecto no está afiliado a DeepSeek ni cuenta con su respaldo. "DeepSeek" se usa solo para describir compatibilidad.
+This project is not affiliated with or endorsed by DeepSeek. "DeepSeek" is used only to describe compatibility.
