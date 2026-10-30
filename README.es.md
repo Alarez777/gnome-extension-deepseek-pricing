@@ -27,7 +27,11 @@ Extensión de GNOME Shell que muestra si la API de DeepSeek está ahora en **tar
 |---|---|
 | ![Menú desplegado](screenshots/menu.png) | ![Preferencias](screenshots/preferences.png) |
 
-Modos del panel: **Solo icono** ![Solo icono](screenshots/panel-icon-only.png) · **Icono y estado** ![Icono y estado](screenshots/panel-icon-state.png) · **Icono y cuenta atrás** ![Icono y cuenta atrás](screenshots/panel-icon-countdown.png)
+| Modo del panel | Vista |
+|---|---|
+| **Solo icono** — el color de la ballena indica la tarifa actual. | ![Solo icono](screenshots/panel-icon-only.png) |
+| **Icono y estado** — añade *Barato* o *Caro* junto al icono. | ![Icono y estado](screenshots/panel-icon-state.png) |
+| **Icono y cuenta atrás** — añade el tiempo hasta el próximo cambio. | ![Icono y cuenta atrás](screenshots/panel-icon-countdown.png) |
 
 ## Horario y precios
 
