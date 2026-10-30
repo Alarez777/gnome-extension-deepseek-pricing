@@ -1,0 +1,161 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+
+/* Keep these colors in sync with src/colors.ts and the SVG fills. */
+.deepseek-panel-stack {
+  spacing: 1px;
+}
+
+.deepseek-panel-content {
+  spacing: 5px;
+  padding: 0 2px;
+}
+
+.deepseek-panel-label {
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.deepseek-progress-track {
+  margin: 0 2px;
+  background-color: #4a4a4a;
+  border-radius: 1px;
+}
+
+.deepseek-progress-fill {
+  border-radius: 1px;
+}
+
+.deepseek-progress-fill.cheap {
+  background-color: #2ec27e;
+}
+
+.deepseek-progress-fill.peak {
+  background-color: #e5a50a;
+}
+
+.deepseek-popup {
+  spacing: 8px;
+}
+
+.deepseek-header {
+  spacing: 7px;
+}
+
+.deepseek-title {
+  font-size: 1.05em;
+  font-weight: 700;
+}
+
+.deepseek-dot {
+  border-radius: 5px;
+}
+
+.deepseek-dot.cheap {
+  background-color: #2ec27e;
+}
+
+.deepseek-dot.peak {
+  background-color: #e5a50a;
+}
+
+.deepseek-countdown {
+  font-weight: 600;
+}
+
+.deepseek-dim {
+  font-size: 0.85em;
+}
+
+.deepseek-timeline {
+  width: 320px;
+  height: 18px;
+}
+
+.deepseek-timeline-tooltip {
+  background-color: rgba(0, 0, 0, 0.88);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.85em;
+}
+
+.deepseek-axis {
+  spacing: 4px;
+  margin-top: 1px;
+}
+
+.deepseek-axis .deepseek-dim {
+  font-size: 0.8em;
+}
+
+.deepseek-legend {
+  spacing: 14px;
+}
+
+.deepseek-legend-item {
+  spacing: 5px;
+}
+
+.deepseek-legend-dot {
+  border-radius: 4px;
+}
+
+.deepseek-legend-dot.cheap {
+  background-color: #2ec27e;
+}
+
+.deepseek-legend-dot.peak {
+  background-color: #e5a50a;
+}
+
+.deepseek-prices {
+  spacing: 4px;
+  margin-top: 4px;
+}
+
+.deepseek-upcoming {
+  spacing: 5px;
+  margin-top: 2px;
+}
+
+.deepseek-upcoming-row {
+  spacing: 6px;
+}
+
+.deepseek-upcoming-time {
+  font-size: 0.9em;
+}
+
+.deepseek-model-row {
+  spacing: 6px;
+}
+
+.deepseek-model {
+  font-weight: 600;
+}
+
+.deepseek-price-row {
+  spacing: 8px;
+}
+
+.deepseek-price {
+  width: 64px;
+  font-size: 0.9em;
+}
+
+.deepseek-price-head {
+  width: 64px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.deepseek-warning {
+  width: 320px;
+  font-size: 0.8em;
+  color: #e5a50a;
+}
+
+.deepseek-data {
+  width: 320px;
+}
