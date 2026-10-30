@@ -25,7 +25,7 @@ Extensión de GNOME Shell que muestra si la API de DeepSeek está ahora en **tar
 
 | Menú desplegado | Preferencias |
 |---|---|
-| ![Menú desplegado](screenshots/menu.png) | ![Preferencias](screenshots/preferences.png) |
+| ![Menú desplegado](screenshots/general.png) | ![Preferencias](screenshots/preferences.png) |
 
 | Modo del panel | Barato | Caro |
 |---|---|---|

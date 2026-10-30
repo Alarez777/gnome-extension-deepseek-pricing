@@ -25,7 +25,7 @@ GNOME Shell extension that shows whether the DeepSeek API is currently on the **
 
 | Popup | Preferences |
 |---|---|
-| ![Popup](screenshots/menu.png) | ![Preferences](screenshots/preferences.png) |
+| ![Popup](screenshots/general.png) | ![Preferences](screenshots/preferences.png) |
 
 | Panel mode | Cheap | Expensive |
 |---|---|---|
