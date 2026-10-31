@@ -1,5 +1,5 @@
 {
-  "name": "DeepSeek Pricing",
+  "name": "DeepSeek Platform Pricing",
   "description": "Shows whether DeepSeek API pricing is currently peak or off-peak, with a 24-hour price timeline and the current official rates.\n\nNot affiliated with or endorsed by DeepSeek.",
   "uuid": "deepseek-pricing@alarez777.github.io",
   "settings-schema": "org.gnome.shell.extensions.deepseek-pricing",

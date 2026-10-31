@@ -1,4 +1,4 @@
-# DeepSeek Pricing
+# DeepSeek Platform Pricing
 
 [Español](README.es.md) | **English**
 
@@ -17,7 +17,7 @@ GNOME Shell extension that shows whether the DeepSeek API is currently on the **
 - 12- or 24-hour clock: follows the GNOME clock by default, with an option to force either.
 - Configurable terminology: **Cheap/Expensive** (simple, default) or **Off-peak/Peak** (official).
 - No automatic network requests, no telemetry and no API keys: everything is computed locally. The only external link is the official pricing page, which opens the browser when clicked.
-- Publishable on [extensions.gnome.org](https://extensions.gnome.org) (GJS/JS only).
+- Published on [extensions.gnome.org](https://extensions.gnome.org/extension/11566/deepseek-pricing/) (GJS/JS only).
 
 ![Extension icon](icons/whale-cheap.svg)
 
@@ -74,6 +74,10 @@ The interface is available in Spanish and English. In Preferences → *Language 
 - To test: `gjs` and, optionally, a nested shell (`gnome-shell --nested --wayland`).
 
 ## Install
+
+The recommended way is to install it from [extensions.gnome.org](https://extensions.gnome.org/extension/11566/deepseek-pricing/): open the page, turn the switch on and confirm. GNOME Shell will also handle updates from there.
+
+### From source
 
 ```sh
 git clone https://github.com/Alarez777/gnome-extension-deepseek-pricing.git
@@ -175,7 +179,7 @@ schemas/              # GSettings
 - Prices are in USD; there is no currency conversion.
 - The progress bar advances within the current block; on a long weekend it moves slowly by design.
 
-## Publishing to extensions.gnome.org
+## Publishing a new version to extensions.gnome.org
 
 ```sh
 make pack
