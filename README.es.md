@@ -17,6 +17,7 @@ Extensión de GNOME Shell que muestra si la API de DeepSeek está ahora en **tar
 - Horas en formato de 12 o 24 h: sigue el reloj de GNOME por defecto, con opción de forzarlo.
 - Terminología configurable: **Barato/Caro** (simple, por defecto) o **Valle/Pico** (oficial).
 - Sin peticiones de red automáticas, sin telemetría y sin claves API: todo se calcula localmente. El único enlace externo es el de precios oficiales, que abre el navegador cuando lo pulsas.
+- También sirve para **OpenCode Go** (verificado el 2026-10-31): aplica el mismo horario de valle/pico a sus modelos DeepSeek, así que la extensión también indica cuándo son baratos o caros.
 - Publicada en [extensions.gnome.org](https://extensions.gnome.org/extension/11566/deepseek-pricing/) (solo GJS/JS).
 
 ![Icono de la extensión](icons/whale-cheap.svg)

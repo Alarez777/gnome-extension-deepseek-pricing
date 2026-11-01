@@ -17,6 +17,7 @@ GNOME Shell extension that shows whether the DeepSeek API is currently on the **
 - 12- or 24-hour clock: follows the GNOME clock by default, with an option to force either.
 - Configurable terminology: **Cheap/Expensive** (simple, default) or **Off-peak/Peak** (official).
 - No automatic network requests, no telemetry and no API keys: everything is computed locally. The only external link is the official pricing page, which opens the browser when clicked.
+- Also works for **OpenCode Go** (verified on 2026-10-31): it applies the same off-peak/peak schedule to its DeepSeek models, so this extension also shows when they are cheap or expensive.
 - Published on [extensions.gnome.org](https://extensions.gnome.org/extension/11566/deepseek-pricing/) (GJS/JS only).
 
 ![Extension icon](icons/whale-cheap.svg)
