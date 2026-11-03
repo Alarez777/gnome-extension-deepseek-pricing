@@ -1,6 +1,6 @@
 {
   "name": "gnome-extension-deepseek-pricing",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "GNOME Shell extension showing DeepSeek API peak/off-peak pricing",
   "private": true,
   "repository": {
