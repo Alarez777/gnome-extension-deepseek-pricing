@@ -70,9 +70,9 @@ The interface is available in Spanish and English. In Preferences → *Language 
 
 ## Requirements
 
-- GNOME Shell 48 (tested on 48.7).
+- GNOME Shell 48–51 (tested on 48.7, 49.10, 50.6 and 51.1).
 - To build: Node.js 20+, npm, `glib-compile-schemas` and `zip`.
-- To test: `gjs` and, optionally, a nested shell (`gnome-shell --nested --wayland`).
+- To test: `gjs`, `gnome-shell-test-tool`, `dbus-run-session` and `python3`; optionally a nested shell (`--nested` on 48, `--devkit --wayland` on 49+).
 
 ## Install
 
@@ -114,13 +114,26 @@ make uninstall
 npm run typecheck  # strict tsc over src + tests
 npm test           # node:test over the pure pricing logic
 make build         # compiles TS + copies assets + compiles the schema
+make test-shell    # headless smoke test with the installed GNOME Shell
 
 # Nested shell to test without affecting your session:
 make install
+# GNOME 48:
 dbus-run-session -- gnome-shell --nested --wayland
+# GNOME 49+:
+dbus-run-session -- gnome-shell --devkit --wayland
 # in a terminal inside that session:
 gnome-extensions enable deepseek-pricing@alarez777.github.io
 ```
+
+`make test-shell` packs the extension and runs `tests/shell/extension.js` in a
+throwaway XDG home and GSettings keyfile. It checks that the extension loads,
+that the panel button exists, that the menu opens and closes, and that
+`disable()`/`enable()` clean up and restore the button.
+
+To test another GNOME version, run `make test-shell` inside a container or VM
+with that version. Debian 13 ships GNOME 48, Fedora 43 ships 49, Fedora 44
+ships 50 and Fedora 45 ships 51.
 
 Logs:
 
@@ -128,7 +141,7 @@ Logs:
 journalctl -f -o cat /usr/bin/gnome-shell
 ```
 
-The pricing, holiday and segment logic lives in `src/pricing/` and **does not import GJS**, so tests run on Node. The UI (`indicator.ts`, `menu.ts`, `timeline.ts`) is GJS/St and is tested manually.
+The pricing, holiday and segment logic lives in `src/pricing/` and **does not import GJS**, so tests run on Node. The UI (`indicator.ts`, `menu.ts`, `timeline.ts`) is GJS/St and is covered by the headless shell smoke test.
 
 ## Data and maintenance
 
@@ -158,7 +171,10 @@ src/
     clock.ts          # 12 h / 24 h and time formatting (pure)
     terms.ts          # cheap/expensive or off-peak/peak terminology (pure)
     format.ts         # local/UTC times and durations (GLib)
-tests/                # tests for the pure logic
+tests/                # unit tests for the pure logic
+  shell/extension.js  # headless GNOME Shell smoke test
+scripts/
+  test-shell.sh       # runs the smoke test in an isolated XDG home
 icons/                # original whale, green and amber
 schemas/              # GSettings
 ```
@@ -172,8 +188,9 @@ schemas/              # GSettings
 
 ## Known limitations
 
-- Only GNOME Shell 48 is advertised (tested on 48.7). GNOME 49–51 are untested: 51 removes the `St.BoxLayout.vertical` property, which this code still uses. To port it, replace it with `orientation: Clutter.Orientation.VERTICAL` (compatible with 48), update `shell-version` in `metadata.json` and test on each version before advertising it.
+- Tested on GNOME Shell 48.7, 49.10, 50.6 and 51.1. GNOME 52 is not advertised until it has been tested.
 - GNOME 49 removed nested mode `--nested` (use `--devkit --wayland`) and GNOME 50 removed X11, so the `Alt+F2` → `r` restart instructions only apply to 48.
+- GNOME Shell 51 removed the deprecated `St.BoxLayout.vertical` property; this version uses `orientation: Clutter.Orientation.VERTICAL`, which also works on 48.
 - GNOME 48 does not expose tooltips on `St`; the information is in the popup and in the optional text mode.
 - It shows official per-token rates, not your spending or actual balance.
 - The name and description GNOME shows in the extension list come from `metadata.json` and do not change with the language preference.

@@ -102,7 +102,7 @@ export class IndicatorController {
     this._peakIcon = loadIcon(icons, 'whale-peak.svg');
 
     const stack = new St.BoxLayout({
-      vertical: true,
+      orientation: Clutter.Orientation.VERTICAL,
       style_class: 'deepseek-panel-stack',
       // El ButtonBox de GNOME Shell estira a su hijo a todo el alto de la
       // barra, así que un wrapper con BinLayout es lo que permite centrar

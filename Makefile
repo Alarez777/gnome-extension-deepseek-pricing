@@ -6,7 +6,7 @@ EXT_DIR := $(EXTENSIONS_DIR)/$(UUID)
 
 GLIB_COMPILE_SCHEMAS ?= $(shell if [ -x /usr/bin/glib-compile-schemas ]; then echo /usr/bin/glib-compile-schemas; else command -v glib-compile-schemas; fi)
 
-.PHONY: all build schemas pack test install verify-install uninstall clean distclean
+.PHONY: all build schemas pack test test-shell install verify-install uninstall clean distclean
 
 all: build
 
@@ -35,6 +35,9 @@ pack: build
 
 test: .stamp-npm
 	npm run check
+
+test-shell: pack
+	./scripts/test-shell.sh
 
 install: build
 	@mkdir -p "$(EXTENSIONS_DIR)"

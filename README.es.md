@@ -70,9 +70,9 @@ La interfaz está en español e inglés. En Preferencias → *Idioma y región*:
 
 ## Requisitos
 
-- GNOME Shell 48 (probado en 48.7).
+- GNOME Shell 48–51 (probado en 48.7, 49.10, 50.6 y 51.1).
 - Para compilar: Node.js 20+, npm, `glib-compile-schemas` y `zip`.
-- Para probar: `gjs` y, opcionalmente, un shell anidado (`gnome-shell --nested --wayland`).
+- Para probar: `gjs`, `gnome-shell-test-tool`, `dbus-run-session` y `python3`; opcionalmente un shell anidado (`--nested` en 48, `--devkit --wayland` en 49+).
 
 ## Instalar
 
@@ -114,13 +114,26 @@ make uninstall
 npm run typecheck  # tsc estricto sobre src + tests
 npm test           # node:test sobre la lógica pura de pricing/
 make build         # compila TS + copia assets + compila el schema
+make test-shell    # test de humo headless con el GNOME Shell instalado
 
 # Shell anidado para probar sin afectar la sesión:
 make install
+# GNOME 48:
 dbus-run-session -- gnome-shell --nested --wayland
+# GNOME 49+:
+dbus-run-session -- gnome-shell --devkit --wayland
 # en una terminal dentro de esa sesión:
 gnome-extensions enable deepseek-pricing@alarez777.github.io
 ```
+
+`make test-shell` empaqueta la extensión y ejecuta `tests/shell/extension.js`
+en un `XDG` temporal y un keyfile de GSettings desechables. Comprueba que la
+extensión carga, que existe el botón del panel, que el menú abre y cierra, y
+que `disable()`/`enable()` retiran y restauran el botón.
+
+Para probar otra versión de GNOME, ejecuta `make test-shell` dentro de un
+contenedor o una VM con esa versión. Debian 13 trae GNOME 48, Fedora 43 trae
+49, Fedora 44 trae 50 y Fedora 45 trae 51.
 
 Logs:
 
@@ -128,7 +141,7 @@ Logs:
 journalctl -f -o cat /usr/bin/gnome-shell
 ```
 
-La lógica de precios, feriados y segmentos vive en `src/pricing/` y **no importa GJS**, así que los tests corren en Node. La UI (`indicator.ts`, `menu.ts`, `timeline.ts`) es GJS/St y se prueba manualmente.
+La lógica de precios, feriados y segmentos vive en `src/pricing/` y **no importa GJS**, así que los tests corren en Node. La UI (`indicator.ts`, `menu.ts`, `timeline.ts`) es GJS/St y está cubierta por el test de humo headless del Shell.
 
 ## Datos y mantenimiento
 
@@ -158,7 +171,10 @@ src/
     clock.ts          # 12 h / 24 h y formato de hora (puro)
     terms.ts          # terminología barato/caro o valle/pico (puro)
     format.ts         # horas locales/UTC y duraciones (GLib)
-tests/                # tests de la lógica pura
+tests/                # tests unitarios de la lógica pura
+  shell/extension.js  # test de humo headless de GNOME Shell
+scripts/
+  test-shell.sh       # ejecuta el test de humo con un XDG aislado
 icons/                # ballena original, verde y ámbar
 schemas/              # GSettings
 ```
@@ -172,8 +188,9 @@ schemas/              # GSettings
 
 ## Limitaciones conocidas
 
-- Solo se anuncia para GNOME Shell 48 (probado en 48.7). GNOME 49–51 no están probados: 51 elimina la propiedad `St.BoxLayout.vertical`, que este código todavía usa. Para portarla, cámbiala por `orientation: Clutter.Orientation.VERTICAL` (compatible con 48), actualiza `shell-version` en `metadata.json` y prueba en cada versión antes de anunciarla.
+- Probado en GNOME Shell 48.7, 49.10, 50.6 y 51.1. GNOME 52 no se anuncia hasta que se haya probado.
 - GNOME 49 eliminó el modo anidado `--nested` (se usa `--devkit --wayland`) y GNOME 50 eliminó X11, así que las instrucciones de reinicio con `Alt+F2` → `r` solo aplican a 48.
+- GNOME Shell 51 eliminó la propiedad obsoleta `St.BoxLayout.vertical`; esta versión usa `orientation: Clutter.Orientation.VERTICAL`, que también funciona en 48.
 - GNOME 48 no expone tooltips en `St`; la información está en el popup y en el modo de texto opcional.
 - Se muestran tarifas oficiales por token, no tu gasto ni tu saldo real.
 - El nombre y la descripción que GNOME muestra en la lista de extensiones vienen de `metadata.json` y no cambian con la preferencia de idioma.

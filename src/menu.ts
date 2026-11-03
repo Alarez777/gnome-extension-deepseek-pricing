@@ -111,7 +111,7 @@ export class PricingMenu {
     item.style_class = 'deepseek-popup-item';
 
     const box = new St.BoxLayout({
-      vertical: true,
+      orientation: Clutter.Orientation.VERTICAL,
       style_class: 'deepseek-popup',
       x_expand: true,
     });
@@ -174,7 +174,7 @@ export class PricingMenu {
 
     // Prices -----------------------------------------------------------------
     const prices = new St.BoxLayout({
-      vertical: true,
+      orientation: Clutter.Orientation.VERTICAL,
       style_class: 'deepseek-prices',
       x_expand: true,
     });
@@ -235,7 +235,7 @@ export class PricingMenu {
 
     // Upcoming changes -------------------------------------------------------
     const upcoming = new St.BoxLayout({
-      vertical: true,
+      orientation: Clutter.Orientation.VERTICAL,
       style_class: 'deepseek-upcoming',
       x_expand: true,
     });
